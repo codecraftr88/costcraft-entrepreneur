@@ -62,6 +62,9 @@ const AlertDescription = ({ children }) => (
 );
 
 // Component หลัก
+
+import React, { useState } from 'react';
+
 const CostCalculator = () => {
   const [currentTab, setCurrentTab] = useState('fixed');
   const [fixedCosts, setFixedCosts] = useState({
@@ -116,11 +119,11 @@ const CostCalculator = () => {
             <label className="w-full text-sm">{key}</label>
             <div className="relative">
               <span className="absolute left-3 top-1/2 transform -translate-y-1/2">฿</span>
-              <Input
+              <input
                 type="number"
                 value={value}
                 onChange={(e) => setData({...data, [key]: e.target.value})}
-                className="w-32 pl-8"
+                className="w-32 pl-8 border rounded-md p-2"
                 min="0"
               />
             </div>
@@ -132,52 +135,48 @@ const CostCalculator = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-4">
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle>โปรแกรมคำนวณต้นทุนสำหรับผู้ประกอบการรายใหม่</CardTitle>
-          <div className="text-sm text-gray-600">
-            <p>พัฒนาโดยคณาจารย์ ที่ปรึกษาโครงการ Young OTOP 2024</p>
-          </div>
-        </CardHeader>
+      <div className="bg-white rounded-lg shadow-lg mb-6">
+        <div className="p-6 border-b text-center">
+          <h1 className="text-2xl font-bold mb-2">โปรแกรมคำนวณต้นทุนสำหรับผู้ประกอบการรายใหม่</h1>
+          <p className="text-sm text-gray-600">พัฒนาโดยคณาจารย์ ที่ปรึกษาโครงการ Young OTOP 2024</p>
+        </div>
 
-        <CardContent>
-          <Tabs>
-            <TabsList>
-              <TabsTrigger 
-                onClick={() => setCurrentTab('fixed')} 
-                className={currentTab === 'fixed' ? 'bg-gray-100' : ''}
-              >
-                ต้นทุนคงที่
-              </TabsTrigger>
-              <TabsTrigger 
-                onClick={() => setCurrentTab('variable')}
-                className={currentTab === 'variable' ? 'bg-gray-100' : ''}
-              >
-                ต้นทุนผันแปร
-              </TabsTrigger>
-              <TabsTrigger 
-                onClick={() => setCurrentTab('monthly')}
-                className={currentTab === 'monthly' ? 'bg-gray-100' : ''}
-              >
-                รายเดือน
-              </TabsTrigger>
-            </TabsList>
-            
-            {currentTab === 'fixed' && renderInputGroup('ต้นทุนคงที่', fixedCosts, setFixedCosts)}
-            {currentTab === 'variable' && renderInputGroup('ต้นทุนผันแปร', variableCosts, setVariableCosts)}
-            {currentTab === 'monthly' && renderInputGroup('ค่าใช้จ่ายรายเดือน', monthlyExpenses, setMonthlyExpenses)}
-          </Tabs>
+        <div className="p-6">
+          <div className="flex space-x-2 mb-4">
+            <button
+              onClick={() => setCurrentTab('fixed')}
+              className={`px-4 py-2 rounded-lg hover:bg-gray-100 ${currentTab === 'fixed' ? 'bg-gray-100' : ''}`}
+            >
+              ต้นทุนคงที่
+            </button>
+            <button
+              onClick={() => setCurrentTab('variable')}
+              className={`px-4 py-2 rounded-lg hover:bg-gray-100 ${currentTab === 'variable' ? 'bg-gray-100' : ''}`}
+            >
+              ต้นทุนผันแปร
+            </button>
+            <button
+              onClick={() => setCurrentTab('monthly')}
+              className={`px-4 py-2 rounded-lg hover:bg-gray-100 ${currentTab === 'monthly' ? 'bg-gray-100' : ''}`}
+            >
+              รายเดือน
+            </button>
+          </div>
+          
+          {currentTab === 'fixed' && renderInputGroup('ต้นทุนคงที่', fixedCosts, setFixedCosts)}
+          {currentTab === 'variable' && renderInputGroup('ต้นทุนผันแปร', variableCosts, setVariableCosts)}
+          {currentTab === 'monthly' && renderInputGroup('ค่าใช้จ่ายรายเดือน', monthlyExpenses, setMonthlyExpenses)}
 
           <div className="mt-6 p-4 bg-gray-50 rounded-lg">
             <h3 className="font-medium text-lg mb-4">ข้อมูลการขาย</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex items-center gap-2">
                 <label className="w-full">จำนวนผลิต</label>
-                <Input
+                <input
                   type="number"
                   value={units}
                   onChange={(e) => setUnits(Number(e.target.value))}
-                  className="w-32"
+                  className="w-32 border rounded-md p-2"
                   min="0"
                 />
                 <span className="ml-2">ชิ้น</span>
@@ -186,22 +185,22 @@ const CostCalculator = () => {
                 <label className="w-full">ราคาขาย</label>
                 <div className="relative">
                   <span className="absolute left-3 top-1/2 transform -translate-y-1/2">฿</span>
-                  <Input
+                  <input
                     type="number"
                     value={price}
                     onChange={(e) => setPrice(Number(e.target.value))}
-                    className="w-32 pl-8"
+                    className="w-32 pl-8 border rounded-md p-2"
                     min="0"
                   />
                 </div>
               </div>
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
-      <Card className="bg-blue-50">
-        <CardContent>
+      <div className="bg-blue-50 rounded-lg shadow-lg">
+        <div className="p-6">
           <h3 className="font-medium text-xl mb-4">สรุปผลการคำนวณ</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-3">
@@ -238,15 +237,13 @@ const CostCalculator = () => {
             </div>
           </div>
 
-          <Alert className="mt-6">
-            <AlertTitle>จุดคุ้มทุน</AlertTitle>
-            <AlertDescription>
-              คุณต้องขายอย่างน้อย {Math.ceil(totals.breakeven)} ชิ้น เพื่อคุ้มทุน
-            </AlertDescription>
-          </Alert>
-        </CardContent>
+          <div className="mt-6 bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+            <h4 className="font-bold mb-2">จุดคุ้มทุน</h4>
+            <p>คุณต้องขายอย่างน้อย {Math.ceil(totals.breakeven)} ชิ้น เพื่อคุ้มทุน</p>
+          </div>
+        </div>
 
-        <CardFooter>
+        <div className="p-6 border-t">
           <div className="w-full text-sm text-gray-600">
             <div className="mb-3">
               <p className="font-semibold">ผู้รวบรวมและเรียบเรียง:</p>
@@ -262,8 +259,8 @@ const CostCalculator = () => {
               <p>โดย อ.ดร.ณัฐวรรธน์ วิวัฒน์กิจภูวดล</p>
             </div>
           </div>
-        </CardFooter>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };
