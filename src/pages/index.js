@@ -64,7 +64,6 @@ const AlertDescription = ({ children }) => (
 // Component หลัก
 
 import React, { useState } from 'react';
-
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -144,7 +143,7 @@ const CostCalculator = () => {
         <CardHeader className="text-center">
           <CardTitle className="text-2xl mb-2">โปรแกรมคำนวณต้นทุนสำหรับผู้ประกอบการรายใหม่</CardTitle>
           <div className="text-sm text-gray-600">
-            <p>คณาจารย์ ที่ปรึกษาโครงการ Young OTOP 2024</p>
+            <p>พัฒนาโดยคณาจารย์ ที่ปรึกษาโครงการ Young OTOP 2024</p>
           </div>
         </CardHeader>
 
