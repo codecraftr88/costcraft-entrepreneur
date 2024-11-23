@@ -1,8 +1,27 @@
-export function Input({ className, ...props }) {
+function Input({ className = '', ...props }) {
+  return <input className={`border rounded p-2 ${className}`} {...props} />;
+}
+
+// แทนที่ Tabs components
+function Tabs({ children }) {
+  return <div>{children}</div>;
+}
+
+function TabsList({ children }) {
+  return <div className="flex gap-2 mb-4">{children}</div>;
+}
+
+function TabsTrigger({ children, value, onClick }) {
   return (
-    <input
-      className={`border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
-      {...props}
-    />
-  )
+    <button
+      className="px-4 py-2 rounded-lg hover:bg-gray-100"
+      onClick={() => onClick(value)}
+    >
+      {children}
+    </button>
+  );
+}
+
+function TabsContent({ children }) {
+  return <div>{children}</div>;
 }
