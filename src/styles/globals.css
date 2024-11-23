@@ -1,15 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-body {
-  @apply bg-gray-50;
-}
-
-.input-with-icon {
-  @apply pl-8;
-}
-
-.currency-symbol {
-  @apply absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500;
-}
