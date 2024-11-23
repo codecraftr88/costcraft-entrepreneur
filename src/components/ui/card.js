@@ -1,19 +1,19 @@
-export function Card({ children, className }) {
-  return <div className={`bg-white rounded-lg shadow ${className}`}>{children}</div>
+function Card({ children, className = '' }) {
+  return <div className={`bg-white rounded-lg shadow-lg p-6 ${className}`}>{children}</div>;
 }
 
-export function CardHeader({ children, className }) {
-  return <div className={`p-6 ${className}`}>{children}</div>
+function CardHeader({ children }) {
+  return <div className="mb-4">{children}</div>;
 }
 
-export function CardTitle({ children, className }) {
-  return <h2 className={`text-2xl font-bold ${className}`}>{children}</h2>
+function CardTitle({ children }) {
+  return <h2 className="text-2xl font-bold">{children}</h2>;
 }
 
-export function CardContent({ children, className }) {
-  return <div className={`p-6 ${className}`}>{children}</div>
+function CardContent({ children }) {
+  return <div>{children}</div>;
 }
 
-export function CardFooter({ children, className }) {
-  return <div className={`p-6 border-t ${className}`}>{children}</div>
+function CardFooter({ children }) {
+  return <div className="border-t mt-6 pt-6">{children}</div>;
 }
