@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 
+
+// เป็น
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../components/ui/card';
+import { Input } from '../components/ui/input';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { Alert, AlertTitle, AlertDescription } from '../components/ui/alert';
+
 const CostCalculator = () => {
   const [fixedCosts, setFixedCosts] = useState({
     'ค่าเช่า (Rent)': 0,
